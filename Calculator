@@ -1,0 +1,41 @@
+# FUNCTIONS
+def add(num1, num2):
+    return num1+num2
+def subtract(num1, num2):
+    return num1-num2
+def prod(num1, num2):
+    return num1*num2
+def div(num1, num2):
+    try:
+        return num1/num2
+    except ZeroDivisionError:
+        return "Can't be divided by zero"
+# MENU
+print("----------Calculator!!----------")
+while True:
+    print(f"1.Addition\n2.Subtraction\n3.Multiplication\n4.Division\n5.Exit")
+    try:
+        choice = int(input("Enter your choice: "))
+    except ValueError:
+        print("Enter appropriate choice")
+    if choice >5 or choice <1:
+        print("Invalid choice")
+        continue
+    if choice == 5:
+        print("Thank You")
+        break
+
+    try:
+        num1 = float(input("enter a number"))
+        num2 = float(input("enter another number"))
+    except ValueError:
+        print("Enter a number")
+    if choice == 1:
+        print('SUM: {}'.format(add(num1, num2)))
+    elif choice == 2:
+        print('DIFFERENCE: {}'.format(subtract(num1, num2)))
+    elif choice == 3:
+        print('PRODUCT: {}'.format(prod(num1, num2)))
+    elif choice == 4:
+        print('DIVISION: {}'.format(div(num1, num2)))
+
