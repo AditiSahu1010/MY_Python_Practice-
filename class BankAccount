@@ -1,0 +1,54 @@
+class BankAccount:
+    def __init__(self, acc_name,acc_number, balance ):
+        self.acc_name = acc_name
+        self.acc_number = acc_number
+        self.balance = balance
+
+    def deposit(self, value):
+        if value < 0:
+            return "Please enter a positive amount"
+        else:
+            self.balance += value
+        return self.balance
+
+    def withdraw(self,value):
+        if value < 0:
+            return "Please enter a positive amount"
+        elif value > self.balance:
+            return "Can't withdraw more than available balance"
+        else:
+            self.balance -= value
+            return self.balance
+
+    def acc_balance(self):
+        '''For checking the users balance'''
+        return self.balance
+
+    def display(self):
+        '''For showing account details'''
+        print(f'Account holder: {self.acc_name}\nAccount number: {self.acc_number}\nBalance: {self.balance}')
+
+acc_1 = BankAccount("Aditi Sahu","1230abc", 340000)
+while True:
+    print(f"1. Deposit\n2. Withdraw\n3. Check Balance\n4. Account Info\n5. Exit")
+    try:
+        choice = int(input("Enter your choice:"))
+    except ValueError:
+        print("Please enter a valid choice")
+        continue
+    if choice not in [1,2,3,4,5]:
+        print(("Invalid Choice!"))
+        continue
+    elif choice == 5:
+        print("Exiting...")
+        break
+    elif choice == 1:
+        value = float(input("Enter amount to be added"))
+        print(acc_1.deposit(value))
+    elif choice == 2:
+        value = float(input("Enter amount to be withdrawn"))
+        print(acc_1.withdraw(value))
+    elif choice == 3:
+        print(acc_1.acc_balance())
+    elif choice == 4:
+       acc_1.display()
